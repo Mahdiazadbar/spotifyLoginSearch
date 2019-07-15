@@ -11,9 +11,8 @@ class LoginPresenter(
 ) : LoginContract.Presenter {
 
 
-
     private var view: LoginContract.View? = view
-    private var storage= storage
+    private var storage = storage
 
     override fun onDestroy() {
         this.view = null
@@ -27,18 +26,28 @@ class LoginPresenter(
     override fun handelLoginResponse(requestCode: Int, resultCode: Int, data: Intent?) {
 
         val response = AuthenticationClient.getResponse(resultCode, data)
-
-        when (response.type) {
-            // Response was successful and contains auth token
-            AuthenticationResponse.Type.TOKEN -> {
+        when (checkType(response.type)) {
+            "SUCCESS" -> {
                 storage.setAuthToken(response.accessToken)
                 view?.onLoginSuccess()
             }
-            AuthenticationResponse.Type.ERROR -> {
+            "FAIL" -> {
                 view?.onLoginFail()
             }
+        }
+    }
+
+    public fun checkType(type: AuthenticationResponse.Type): String {
+        return when (type) {
+            // Response was successful and contains auth token
+            AuthenticationResponse.Type.TOKEN -> {
+                "SUCCESS"
+            }
+            AuthenticationResponse.Type.ERROR -> {
+                "FAIL"
+            }
             else -> {
-                view?.onLoginFail()
+                "FAIL"
             }
         }
     }
