@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DigiPay Challenge</string>
+    <string name="fail_login">Problem in Login</string>
 </resources>

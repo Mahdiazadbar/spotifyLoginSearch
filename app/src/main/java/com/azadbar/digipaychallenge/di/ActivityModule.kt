@@ -1,6 +1,6 @@
 package com.azadbar.digipaychallenge.di
 
-import com.azadbar.digipaychallenge.ui.fragment.LoginFragment
+import com.azadbar.digipaychallenge.ui.fragment.login.LoginFragment
 import com.azadbar.digipaychallenge.ui.MainActivity
 import com.azadbar.digipaychallenge.ui.fragment.SearchFragment
 import dagger.Module

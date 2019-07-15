@@ -3,7 +3,7 @@ package com.azadbar.digipaychallenge.ui
 import android.content.Intent
 import android.os.Bundle
 import com.azadbar.digipaychallenge.R
-import com.azadbar.digipaychallenge.ui.fragment.LoginFragment
+import com.azadbar.digipaychallenge.ui.fragment.login.LoginFragment
 import dagger.android.support.DaggerAppCompatActivity
 
 class MainActivity : DaggerAppCompatActivity() {
