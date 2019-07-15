@@ -4,5 +4,5 @@ import com.azadbar.digipaychallenge.model.SearchResponse;
 
 
 interface SpotifyRepository {
-    fun loadSearch(): SearchResponse
+    fun loadSearch(text: String,listener: SerchRepositoryListener)
 }

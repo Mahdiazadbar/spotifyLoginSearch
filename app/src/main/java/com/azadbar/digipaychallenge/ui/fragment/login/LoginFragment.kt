@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.azadbar.digipaychallenge.utility.PrefStore
 import com.azadbar.digipaychallenge.R
 import com.azadbar.digipaychallenge.di.DependencyInjectorImpl
-import com.azadbar.digipaychallenge.ui.fragment.SearchFragment
+import com.azadbar.digipaychallenge.ui.fragment.search.SearchFragment
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
@@ -45,7 +45,7 @@ class LoginFragment : DaggerFragment(),LoginContract.View{
 
         prefs = PrefStore(context)
 
-        setPresenter(LoginPresenter(this,prefs, DependencyInjectorImpl()))
+        setPresenter(LoginPresenter(this,prefs))
 
     }
 

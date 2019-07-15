@@ -2,7 +2,7 @@ package com.azadbar.digipaychallenge.di
 
 import com.azadbar.digipaychallenge.ui.fragment.login.LoginFragment
 import com.azadbar.digipaychallenge.ui.MainActivity
-import com.azadbar.digipaychallenge.ui.fragment.SearchFragment
+import com.azadbar.digipaychallenge.ui.fragment.search.SearchFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -8,8 +8,7 @@ import com.spotify.sdk.android.authentication.AuthenticationResponse
 
 class LoginPresenter(
     view: LoginContract.View,
-    prefStore: PrefStore,
-    dependencyInjector: DependencyInjector
+    prefStore: PrefStore
 ) : LoginContract.Presenter {
 
 
