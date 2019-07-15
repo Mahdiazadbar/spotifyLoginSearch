@@ -3,10 +3,7 @@ package com.azadbar.digipaychallenge.ui.fragment.search
 import com.azadbar.digipaychallenge.data.SerchRepositoryListener
 import com.azadbar.digipaychallenge.di.DependencyInjector
 import com.azadbar.digipaychallenge.model.SearchResponse
-import com.azadbar.digipaychallenge.utility.PrefStore
-import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
-import java.util.concurrent.TimeUnit
 
 class SearchPresenter(
     view: SearchContract.View,

@@ -5,7 +5,7 @@ import com.azadbar.digipaychallenge.BuildConfig
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.azadbar.digipaychallenge.App
-import com.azadbar.digipaychallenge.utility.PrefStore
+import com.azadbar.digipaychallenge.utility.Storage
 import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
@@ -28,7 +28,7 @@ class AppModule {
             HttpLoggingInterceptor.Level.NONE
         }
         httpLoggingInterceptor.level = logs
-        val storeService = PrefStore(context)
+        val storeService = Storage(context)
         val interceptor = Interceptor { chain ->
             val request = chain.request()
             val builder = request.newBuilder()

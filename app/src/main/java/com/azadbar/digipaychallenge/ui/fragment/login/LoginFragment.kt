@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.azadbar.digipaychallenge.utility.PrefStore
+import com.azadbar.digipaychallenge.utility.Storage
 import com.azadbar.digipaychallenge.R
-import com.azadbar.digipaychallenge.di.DependencyInjectorImpl
 import com.azadbar.digipaychallenge.ui.fragment.search.SearchFragment
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
@@ -21,7 +20,7 @@ class LoginFragment : DaggerFragment(),LoginContract.View{
 
     private lateinit var presenter: LoginContract.Presenter
 
-    lateinit var prefs: PrefStore
+    lateinit var prefs: Storage
 
     companion object {
 
@@ -43,7 +42,7 @@ class LoginFragment : DaggerFragment(),LoginContract.View{
             presenter.startLogin()
         }
 
-        prefs = PrefStore(context)
+        prefs = Storage(context)
 
         setPresenter(LoginPresenter(this,prefs))
 

@@ -13,7 +13,7 @@ import com.azadbar.digipaychallenge.R
 import com.azadbar.digipaychallenge.di.DependencyInjectorImpl
 import com.azadbar.digipaychallenge.model.ArtistItems
 import com.azadbar.digipaychallenge.ui.adapter.RecyclerAdapter
-import com.azadbar.digipaychallenge.utility.PrefStore
+import com.azadbar.digipaychallenge.utility.Storage
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragmnet_search.*
 import retrofit2.Retrofit
@@ -28,7 +28,7 @@ class SearchFragment : DaggerFragment(), TextWatcher, SearchContract.View {
 
 
     lateinit var adapter: RecyclerAdapter
-    lateinit var prefs: PrefStore
+    lateinit var prefs: Storage
 
     companion object {
         fun newInstance(): SearchFragment {
@@ -59,7 +59,7 @@ class SearchFragment : DaggerFragment(), TextWatcher, SearchContract.View {
         recycler.layoutManager = LinearLayoutManager(context)
 
 
-        prefs = PrefStore(context)
+        prefs = Storage(context)
         setPresenter(SearchPresenter(this, DependencyInjectorImpl()))
 
     }

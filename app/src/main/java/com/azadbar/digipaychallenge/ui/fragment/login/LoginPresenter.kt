@@ -1,20 +1,19 @@
 package com.azadbar.digipaychallenge.ui.fragment.login
 
 import android.content.Intent
-import com.azadbar.digipaychallenge.di.DependencyInjector
-import com.azadbar.digipaychallenge.utility.PrefStore
+import com.azadbar.digipaychallenge.utility.Storage
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationResponse
 
 class LoginPresenter(
     view: LoginContract.View,
-    prefStore: PrefStore
+    storage: Storage
 ) : LoginContract.Presenter {
 
 
 
     private var view: LoginContract.View? = view
-    private var storage= prefStore
+    private var storage= storage
 
     override fun onDestroy() {
         this.view = null
