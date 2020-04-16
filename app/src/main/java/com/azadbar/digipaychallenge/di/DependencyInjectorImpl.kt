@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 
 class DependencyInjectorImpl : DependencyInjector {
     override fun spotifyRepository(retrofit: Retrofit): SpotifyRepository {
-        return SpotifyRepositoryImpl(retrofit)
+        return SpotifyRepositoryImpl()
     }
 
 

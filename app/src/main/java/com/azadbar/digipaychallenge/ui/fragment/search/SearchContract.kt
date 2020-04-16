@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 
 interface SearchContract {
     interface Presenter : BasePresenter {
-        fun startSearch(serchText: String,retrofit: Retrofit)
+        fun startSearch(serchText: String)
     }
 
     interface View : BaseView<Presenter> {

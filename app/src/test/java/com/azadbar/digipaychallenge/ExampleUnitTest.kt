@@ -1,65 +1,57 @@
 package com.azadbar.digipaychallenge
 
-import android.content.Context
-import android.content.Intent
+import android.content.SharedPreferences
 import com.azadbar.digipaychallenge.ui.fragment.login.LoginContract
 import com.azadbar.digipaychallenge.ui.fragment.login.LoginPresenter
 import com.azadbar.digipaychallenge.utility.Storage
-import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationResponse
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.ArgumentCaptor
+import org.mockito.ArgumentMatchers.any
+import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.runners.MockitoJUnitRunner
 
 
-
-class ExampleUnitTest {
-
-
-
-    @Mock
-    lateinit var view: LoginContract.View
+@RunWith(MockitoJUnitRunner::class)
+class ExampleUnitTest  {
 
     @Mock
-    lateinit var storage: Storage
+    private lateinit var view: LoginContract.View
 
     @Mock
-    lateinit var intent: Intent
-
-    @Mock
-    lateinit var context: Context
+    private lateinit var storage: Storage
 
 
-    @Mock
-    lateinit var authenticationClient: AuthenticationClient
-
-
-
-    private lateinit var presenter:LoginPresenter
-
-
+    lateinit var presenter: LoginPresenter
 
 
     @Before
     fun setUp() {
-        view = Mockito.mock(LoginContract.View::class.java)
-        intent = Mockito.mock(Intent::class.java)
-        storage = Mockito.mock(Storage::class.java)
-        context = Mockito.mock(Context::class.java)
-        authenticationClient = Mockito.mock(AuthenticationClient::class.java)
+        presenter = LoginPresenter(view, storage)
     }
-
 
     @Test
     fun testHandelLogin() {
 
-        presenter=LoginPresenter(view,storage)
 
-        val type=AuthenticationResponse.Type.ERROR
-        presenter.checkType(type)
+        presenter.handelLoginResponse(AuthenticationResponse.Type.TOKEN,"" )
 
-        Assert.assertEquals( presenter.checkType(type),"FAIL")
+        Mockito.verify(view).onLoginSuccess()
+
+    }
+
+    @Test
+    fun testHandelFailLogin() {
+
+
+        presenter.handelLoginResponse(AuthenticationResponse.Type.ERROR,"" )
+
+        Mockito.verify(view).onLoginFail()
+
     }
 }

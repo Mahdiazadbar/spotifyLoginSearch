@@ -42,7 +42,7 @@ class LoginFragment : DaggerFragment(),LoginContract.View{
             presenter.startLogin()
         }
 
-        prefs = Storage(context)
+        prefs = Storage(context!!)
 
         setPresenter(LoginPresenter(this,prefs))
 
@@ -75,7 +75,10 @@ class LoginFragment : DaggerFragment(),LoginContract.View{
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        presenter.handelLoginResponse(requestCode, resultCode, data);
+        val response = AuthenticationClient.getResponse(resultCode, data)
+
+        presenter.handelLoginResponse(response.type,response.accessToken)
+
     }
 
 

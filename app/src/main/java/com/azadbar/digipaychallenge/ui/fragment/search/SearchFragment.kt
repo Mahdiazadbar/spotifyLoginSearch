@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.azadbar.digipaychallenge.R
+import com.azadbar.digipaychallenge.data.SpotifyRepositoryImpl
 import com.azadbar.digipaychallenge.di.DependencyInjectorImpl
 import com.azadbar.digipaychallenge.model.ArtistItems
 import com.azadbar.digipaychallenge.ui.adapter.RecyclerAdapter
@@ -59,8 +60,8 @@ class SearchFragment : DaggerFragment(), TextWatcher, SearchContract.View {
         recycler.layoutManager = LinearLayoutManager(context)
 
 
-        prefs = Storage(context)
-        setPresenter(SearchPresenter(this, DependencyInjectorImpl()))
+        prefs = Storage(context!!)
+        setPresenter(SearchPresenter(this, SpotifyRepositoryImpl(), prefs))
 
     }
 
@@ -71,7 +72,7 @@ class SearchFragment : DaggerFragment(), TextWatcher, SearchContract.View {
 
     override fun onLoadSearch(items: List<ArtistItems>) {
         activity!!.runOnUiThread {
-            adapter.items= items.toMutableList()
+            adapter.items = items.toMutableList()
             adapter.notifyDataSetChanged()
         }
 
@@ -85,7 +86,7 @@ class SearchFragment : DaggerFragment(), TextWatcher, SearchContract.View {
     @SuppressLint("CheckResult")
     fun search(searchText: String) {
         if (!searchText.isBlank()) {
-            presenter.startSearch(searchText, retrofit)
+            presenter.startSearch(searchText)
         } else {
             adapter.items.clear()
             adapter.notifyDataSetChanged()
