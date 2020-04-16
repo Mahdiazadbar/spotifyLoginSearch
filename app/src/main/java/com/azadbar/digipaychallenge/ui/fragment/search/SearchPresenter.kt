@@ -1,11 +1,7 @@
 package com.azadbar.digipaychallenge.ui.fragment.search
 
 import android.support.annotation.NonNull
-import com.azadbar.digipaychallenge.data.SerchRepositoryListener
-import com.azadbar.digipaychallenge.data.SpotifyRepository
 import com.azadbar.digipaychallenge.data.SpotifyRepositoryImpl
-import com.azadbar.digipaychallenge.di.DependencyInjector
-import com.azadbar.digipaychallenge.model.ArtistItems
 import com.azadbar.digipaychallenge.model.SearchResponse
 import com.azadbar.digipaychallenge.utility.Storage
 import io.reactivex.Observable
@@ -13,7 +9,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
 
 class SearchPresenter(
     view: SearchContract.View,

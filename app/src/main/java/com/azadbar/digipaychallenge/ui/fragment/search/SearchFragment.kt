@@ -2,6 +2,7 @@ package com.azadbar.digipaychallenge.ui.fragment.search
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,16 +12,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.azadbar.digipaychallenge.R
 import com.azadbar.digipaychallenge.data.SpotifyRepositoryImpl
-import com.azadbar.digipaychallenge.di.DependencyInjectorImpl
 import com.azadbar.digipaychallenge.model.ArtistItems
 import com.azadbar.digipaychallenge.ui.adapter.RecyclerAdapter
 import com.azadbar.digipaychallenge.utility.Storage
-import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragmnet_search.*
 import retrofit2.Retrofit
 import javax.inject.Inject
 
-class SearchFragment : DaggerFragment(), TextWatcher, SearchContract.View {
+class SearchFragment : Fragment(), TextWatcher, SearchContract.View {
 
 
     private lateinit var presenter: SearchContract.Presenter

@@ -2,6 +2,7 @@ package com.azadbar.digipaychallenge.ui.fragment.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,10 +13,9 @@ import com.azadbar.digipaychallenge.ui.fragment.search.SearchFragment
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
-import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragmnet_login.*
 
-class LoginFragment : DaggerFragment(),LoginContract.View{
+class LoginFragment : Fragment(),LoginContract.View{
 
 
     private lateinit var presenter: LoginContract.Presenter

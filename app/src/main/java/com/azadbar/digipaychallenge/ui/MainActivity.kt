@@ -2,11 +2,11 @@ package com.azadbar.digipaychallenge.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.azadbar.digipaychallenge.R
 import com.azadbar.digipaychallenge.ui.fragment.login.LoginFragment
-import dagger.android.support.DaggerAppCompatActivity
 
-class MainActivity : DaggerAppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
