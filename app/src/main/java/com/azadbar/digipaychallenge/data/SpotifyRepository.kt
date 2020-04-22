@@ -6,5 +6,5 @@ import io.reactivex.Observable
 
 
 interface SpotifyRepository {
-    fun loadSearch(text: String,token:String): Observable<SearchResponse>
+    fun loadSearch(text: String): Observable<SearchResponse>
 }

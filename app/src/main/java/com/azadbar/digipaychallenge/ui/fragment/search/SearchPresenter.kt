@@ -1,30 +1,23 @@
 package com.azadbar.digipaychallenge.ui.fragment.search
 
-import android.support.annotation.NonNull
-import com.azadbar.digipaychallenge.data.SerchRepositoryListener
-import com.azadbar.digipaychallenge.data.SpotifyRepository
+import androidx.annotation.NonNull
 import com.azadbar.digipaychallenge.data.SpotifyRepositoryImpl
-import com.azadbar.digipaychallenge.di.DependencyInjector
-import com.azadbar.digipaychallenge.model.ArtistItems
 import com.azadbar.digipaychallenge.model.SearchResponse
-import com.azadbar.digipaychallenge.utility.Storage
+import com.azadbar.digipaychallenge.utility.AppSharedPreferences
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
+import javax.inject.Inject
 
-class SearchPresenter(
-    view: SearchContract.View,
-    private var spotifyRepository: SpotifyRepositoryImpl,
-    private var storage: Storage
-) : SearchContract.Presenter {
+class SearchPresenter constructor(view: SearchContract.View,
+                                          private var spotifyRepository: SpotifyRepositoryImpl): SearchContract.Presenter {
 
 
     private val compositeDisposable = CompositeDisposable()
 
-    val searchResultsObservable: (String) -> Observable<SearchResponse> = { query -> spotifyRepository.loadSearch(query,storage.getAuthToken()) }
+    val searchResultsObservable: (String) -> Observable<SearchResponse> = { query -> spotifyRepository.loadSearch(query) }
 
     private var view: SearchContract.View? = view
 

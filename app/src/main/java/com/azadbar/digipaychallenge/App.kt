@@ -1,10 +1,23 @@
 package com.azadbar.digipaychallenge
 
-import com.azadbar.digipaychallenge.di.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import android.app.Activity
+import android.app.Application
+import com.azadbar.digipaychallenge.di.AppInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
+import javax.inject.Inject
 
-class App : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> =
-            DaggerAppComponent.builder().application(this).build()
+
+class App : Application(), HasActivityInjector {
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
+
+    override fun onCreate() {
+        super.onCreate()
+        AppInjector.init(this)
+    }
+
+    override fun activityInjector(): DispatchingAndroidInjector<Activity> {
+        return dispatchingAndroidInjector!!
+    }
 }

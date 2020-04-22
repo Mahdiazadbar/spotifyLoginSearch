@@ -1,11 +1,12 @@
 package com.azadbar.digipaychallenge.ui.fragment.login
 
-import com.azadbar.digipaychallenge.utility.Storage
+import com.azadbar.digipaychallenge.utility.AppSharedPreferences
 import com.spotify.sdk.android.authentication.AuthenticationResponse
+import javax.inject.Inject
 
-class LoginPresenter(
+class LoginPresenter constructor(
     private var view: LoginContract.View?,
-    private var storage: Storage
+    private var appSharedPreferences: AppSharedPreferences
 ) : LoginContract.Presenter {
 
 
@@ -22,7 +23,7 @@ class LoginPresenter(
 
         when (checkType(type)) {
             "SUCCESS" -> {
-                storage.setAuthToken(token)
+                appSharedPreferences.setAuthToken(token)
                 view?.onLoginSuccess()
             }
             "FAIL" -> {

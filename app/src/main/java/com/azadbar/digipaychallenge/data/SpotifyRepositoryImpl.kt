@@ -2,25 +2,22 @@ package com.azadbar.digipaychallenge.data
 
 
 import com.azadbar.digipaychallenge.model.SearchResponse
-import com.azadbar.digipaychallenge.data.rest.RetrofitClient
-import com.azadbar.digipaychallenge.data.rest.SpotifyApiInterface
+import com.azadbar.digipaychallenge.data.rest.ApiInterface
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class SpotifyRepositoryImpl  : SpotifyRepository {
+class SpotifyRepositoryImpl @Inject  constructor(private var apiInterface: ApiInterface)  : SpotifyRepository {
 
 
 
-    private var spotifyApi: SpotifyApiInterface = RetrofitClient.spotifyApi
 
-    override fun loadSearch(text: String,token:String): Observable<SearchResponse> {
+    override fun loadSearch(text: String): Observable<SearchResponse> {
 
-        return spotifyApi
-            .searchSpotify(text, "track,artist",token)
+        return apiInterface
+            .searchSpotify(text, "track,artist")
             .subscribeOn(Schedulers.io())
             .debounce(1, TimeUnit.SECONDS)
             .observeOn(AndroidSchedulers.mainThread())

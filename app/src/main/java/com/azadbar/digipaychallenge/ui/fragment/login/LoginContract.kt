@@ -4,6 +4,7 @@ import android.content.Intent
 import com.azadbar.digipaychallenge.base.BasePresenter
 import com.azadbar.digipaychallenge.base.BaseView
 import com.spotify.sdk.android.authentication.AuthenticationResponse
+import javax.inject.Inject
 
 interface LoginContract {
     interface Presenter : BasePresenter {
@@ -11,7 +12,7 @@ interface LoginContract {
         fun handelLoginResponse(type:AuthenticationResponse.Type,token: String)
     }
 
-    interface View : BaseView<Presenter>{
+    interface View {
         fun startForLoginSpotify()
         fun onLoginSuccess()
         fun onLoginFail()

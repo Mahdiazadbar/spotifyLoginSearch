@@ -2,25 +2,27 @@ package com.azadbar.digipaychallenge.ui.fragment.login
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.azadbar.digipaychallenge.utility.Storage
+import com.azadbar.digipaychallenge.utility.AppSharedPreferences
 import com.azadbar.digipaychallenge.R
+import com.azadbar.digipaychallenge.di.Injectable
 import com.azadbar.digipaychallenge.ui.fragment.search.SearchFragment
 import com.spotify.sdk.android.authentication.AuthenticationClient
 import com.spotify.sdk.android.authentication.AuthenticationRequest
 import com.spotify.sdk.android.authentication.AuthenticationResponse
-import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragmnet_login.*
+import javax.inject.Inject
 
-class LoginFragment : DaggerFragment(),LoginContract.View{
+class LoginFragment : Fragment(),LoginContract.View, Injectable {
 
 
-    private lateinit var presenter: LoginContract.Presenter
+    @Inject
+    lateinit var presenter: LoginPresenter
 
-    lateinit var prefs: Storage
 
     companion object {
 
@@ -38,18 +40,14 @@ class LoginFragment : DaggerFragment(),LoginContract.View{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         button_login.setOnClickListener {
             presenter.startLogin()
         }
 
-        prefs = Storage(context!!)
 
-        setPresenter(LoginPresenter(this,prefs))
 
-    }
 
-    override fun setPresenter(presenter: LoginContract.Presenter) {
-        this.presenter = presenter
     }
 
 

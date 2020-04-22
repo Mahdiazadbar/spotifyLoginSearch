@@ -7,7 +7,10 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 
-interface SpotifyApiInterface {
+interface ApiInterface {
+
+
+
     @GET("search")
-    fun searchSpotify(@Header("Authorization") token:String,@Query("q") query: String, @Query("type") type: String): Observable<SearchResponse>
+    fun searchSpotify(@Query("q") query: String, @Query("type") type: String): Observable<SearchResponse>
 }

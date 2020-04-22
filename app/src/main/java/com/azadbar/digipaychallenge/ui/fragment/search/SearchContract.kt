@@ -10,7 +10,7 @@ interface SearchContract {
         fun startSearch(serchText: String)
     }
 
-    interface View : BaseView<Presenter> {
+    interface View  {
         fun onLoadSearch(items: List<ArtistItems>)
         fun onLoadFail()
     }

@@ -1,10 +1,13 @@
 package com.azadbar.digipaychallenge.utility
 
+import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import javax.inject.Inject
+import javax.inject.Singleton
 
-open class Storage constructor(context: Context) {
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("shared preferences", 0)
+open class AppSharedPreferences  @Inject constructor(application: Application) {
+    private val sharedPreferences: SharedPreferences = application.getSharedPreferences("shared preferences", 0)
 
     open fun setAuthToken(authToken: String?) {
             sharedPreferences.edit()
@@ -13,7 +16,7 @@ open class Storage constructor(context: Context) {
     }
 
     fun getAuthToken(): String {
-        return sharedPreferences.getString("token", "")
+        return sharedPreferences.getString("token", "")!!
     }
 
     fun removeAuthToken() {
